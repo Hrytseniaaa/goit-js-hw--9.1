@@ -68,5 +68,6 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-gfhgfbgf
+
+// слухачі
 refs.btn.addEventListener('click', getStartTimer)
