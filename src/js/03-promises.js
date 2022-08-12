@@ -11,7 +11,7 @@ const refs = {
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
-  const promiseCreate = new Promise((fulfill, reject) => {
+  const promiseCreate = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
         // Fulfill

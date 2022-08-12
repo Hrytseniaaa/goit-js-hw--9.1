@@ -5,15 +5,18 @@ import Notiflix from 'notiflix';
 const refs = {
     dataSelector: document.querySelector('#datetime-picker'),
     btn: document.querySelector('button'), 
-    valueEl: document.querySelectorAll('.value')
+    daysEl: document.querySelector('[data-days]'),
+    hoursEl: document.querySelector('[data-hours]'),
+    minutesEl: document.querySelector('[data-minutes]'),
+    secondsEl: document.querySelector('[data-seconds]'),
 }
 
 
-const done = (result) => {
-    refs.valueEl[0].textContent = result.days.toString().padStart(2, '0');
-    refs.valueEl[1].textContent = result.hours.toString().padStart(2, '0');
-    refs.valueEl[2].textContent = result.minutes.toString().padStart(2, '0');
-    refs.valueEl[3].textContent = result.seconds.toString().padStart(2, '0');
+const render = (result) => {
+    refs.daysEl.textContent = result.days.toString().padStart(2, '0');
+    refs.hoursEl.textContent = result.hours.toString().padStart(2, '0');
+    refs.minutesEl.textContent = result.minutes.toString().padStart(2, '0');
+    refs.secondsEl.textContent = result.seconds.toString().padStart(2, '0');
 }
 
 const getStartTimer = (e) => {
@@ -24,9 +27,10 @@ const getStartTimer = (e) => {
         const oddsInSeconds = selectedDate - Date.now();
         if (oddsInSeconds <= 0) {
              clearInterval(timerId);
+            return;
             }
         const result = convertMs(oddsInSeconds);
-        done(result);
+        render(result);
     }, 1000) 
     
 
